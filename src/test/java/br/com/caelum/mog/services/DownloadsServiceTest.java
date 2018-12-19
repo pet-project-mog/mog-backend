@@ -41,7 +41,7 @@ class DownloadsServiceTest {
                 new Course("Course Two", "two", 20, defaultSummary)
         );
 
-        Offer offer = new Offer(customer, courses, LocalDate.of(2018, Month.MARCH, 25));
+        Offer offer = new Offer(customer, courses, LocalDate.of(2018, Month.MARCH, 25), null);
 
         Downloadable downloadable = service.getDowloadableOffer(offer);
 
