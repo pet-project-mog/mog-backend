@@ -3,6 +3,7 @@ package br.com.caelum.mog.domains.dtos;
 import br.com.caelum.mog.domains.models.Course;
 import br.com.caelum.mog.domains.models.Customer;
 import br.com.caelum.mog.domains.models.Offer;
+import br.com.caelum.mog.domains.models.Owner;
 import br.com.caelum.mog.services.CoursesService;
 import org.springframework.util.Assert;
 
@@ -15,6 +16,7 @@ public class OfferDTO {
 
     private String commercialName;
     private List<CourseDTO> courses = new ArrayList<>();
+    private String ownerName;
 
     /**
      * @deprecated frameworks only
@@ -22,12 +24,14 @@ public class OfferDTO {
     @Deprecated(since = "1.0.0")
     private OfferDTO() { }
 
-    public OfferDTO(String commercialName, CourseDTO... courses) {
+    public OfferDTO(String commercialName, String ownerName, CourseDTO... courses) {
         Assert.hasText(commercialName, "Commercial name required");
         Assert.notEmpty(courses, "At least one course must be informed");
+        Assert.hasText(ownerName, "Owner name required");
 
         this.commercialName = commercialName;
         this.courses = List.of(courses);
+        this.ownerName = ownerName;
     }
 
     public String getCommercialName() {
@@ -38,12 +42,19 @@ public class OfferDTO {
         return courses;
     }
 
+    public String getOwnerName() {
+		return ownerName;
+	}
+
     public Offer toOffer(CoursesService service) {
 
         List<Course> mappedCourses = this.courses.stream().map(dto -> dto.toCourse(service)).collect(Collectors.toList());
 
         Customer customer = new Customer(commercialName);
 
-        return new Offer(customer, mappedCourses, LocalDate.now());
+        Owner owner = new Owner(ownerName);
+
+		return new Offer(customer, mappedCourses, LocalDate.now(), owner);
     }
+
 }
