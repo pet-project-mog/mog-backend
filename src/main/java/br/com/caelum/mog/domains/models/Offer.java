@@ -14,7 +14,7 @@ import java.util.Locale;
 public class Offer {
 
     private Customer customer;
-
+    private Owner owner;
     private List<Course> courses =  new ArrayList<>();
     private LocalDate date;
 
@@ -25,12 +25,13 @@ public class Offer {
     @Deprecated(since = "1.0.0")
     private Offer() { }
 
-    public Offer(Customer customer, List<Course> courses, LocalDate date){
+    public Offer(Customer customer, List<Course> courses, LocalDate date, Owner owner){
         Assert.notNull(customer, "Customer required");
         Assert.notEmpty(courses, "Courses required");
         Assert.notNull(date, "Date required");
 
         this.customer = customer;
+        this.owner = owner;
         this.courses = courses;
         this.date = date;
     }
@@ -56,4 +57,8 @@ public class Offer {
 
         return String.format(locale, "%s de %s de %s", day, month, year);
     }
+
+	public Owner getOwner() {
+		return owner;
+	}
 }
