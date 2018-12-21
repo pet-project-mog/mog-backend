@@ -1,5 +1,6 @@
 package br.com.caelum.mog.domains.dtos;
 
+import br.com.caelum.mog.domains.models.CompanyInfo;
 import br.com.caelum.mog.domains.models.Course;
 import br.com.caelum.mog.domains.models.Customer;
 import br.com.caelum.mog.domains.models.Offer;
@@ -17,8 +18,9 @@ public class OfferDTO {
     private String commercialName;
     private List<CourseDTO> courses = new ArrayList<>();
     private String ownerName;
+    private CompanyInfo companyInfo;
 
-    /**
+	/**
      * @deprecated frameworks only
      */
     @Deprecated(since = "1.0.0")
@@ -45,6 +47,10 @@ public class OfferDTO {
     public String getOwnerName() {
 		return ownerName;
 	}
+    
+    public CompanyInfo getCompanyInfo() {
+		return companyInfo;
+	}
 
     public Offer toOffer(CoursesService service) {
 
@@ -53,6 +59,8 @@ public class OfferDTO {
         Customer customer = new Customer(commercialName);
 
         Owner owner = new Owner(ownerName);
+        
+        new CompanyInfo("unidade", "email");
 
 		return new Offer(customer, mappedCourses, LocalDate.now(), owner);
     }
