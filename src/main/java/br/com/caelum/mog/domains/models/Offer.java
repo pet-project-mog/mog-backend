@@ -1,15 +1,15 @@
 package br.com.caelum.mog.domains.models;
 
 import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.util.Assert;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import static org.springframework.util.Assert.notEmpty;
+import static org.springframework.util.Assert.notNull;
 
 public class Offer {
 
@@ -17,7 +17,7 @@ public class Offer {
     private Owner owner;
     private List<Course> courses =  new ArrayList<>();
     private LocalDate date;
-
+    private CompanyInfo companyInfo;
 
     /**
      * @deprecated frameworks only
@@ -25,15 +25,16 @@ public class Offer {
     @Deprecated(since = "1.0.0")
     private Offer() { }
 
-    public Offer(Customer customer, List<Course> courses, LocalDate date, Owner owner){
-        Assert.notNull(customer, "Customer required");
-        Assert.notEmpty(courses, "Courses required");
-        Assert.notNull(date, "Date required");
+    public Offer(Customer customer, List<Course> courses, LocalDate date, Owner owner, CompanyInfo companyInfo){
+        notNull(customer, "Customer required");
+        notEmpty(courses, "Courses required");
+        notNull(date, "Date required");
 
         this.customer = customer;
         this.owner = owner;
         this.courses = courses;
         this.date = date;
+        this.companyInfo = companyInfo;
     }
 
     public Customer getCustomer() {
@@ -61,4 +62,8 @@ public class Offer {
 	public Owner getOwner() {
 		return owner;
 	}
+
+    public CompanyInfo getCompanyInfo() {
+        return companyInfo;
+    }
 }
