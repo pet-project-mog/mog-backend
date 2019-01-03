@@ -4,31 +4,42 @@ public enum CompanyUnit {
 
 	SP {
 		@Override
-		public String getNome() {
+		public String getName() {
 			return "São Paulo";
 		}
-		
+
 		@Override
 		public String getEmail() {
 			return "corporativo@caelum.com.br";
 		}
+
+		@Override
+		public String getTelephone() {
+			return "(11) 5571-2751";
+		}
+
 	},
 	
 	RJ {
 		
 		@Override
-		public String getNome() {
+		public String getName() {
 			return "Rio de Janeiro";
 		}
 		
 		public String getEmail() {
 			return "contato.rj@caelum.com.br";
 		}
+
+		@Override
+		public String getTelephone() {
+			return "(11) 2297-0033";
+		}
 	},
 	
 	BSB {
 		@Override
-		public String getNome() {
+		public String getName() {
 			return "Brasília";
 		}
 		
@@ -36,13 +47,22 @@ public enum CompanyUnit {
 		public String getEmail() {
 			return "contato.df@caelum.com.br";
 		}
+
+		@Override
+		public String getTelephone() {
+			return "(11) 3039-4222";
+		}
 	};
 
-	public String getNome() {
+	public String getName() {
 		return "";
 	}
 
 	public String getEmail() {
+		return "";
+	}
+
+	public String getTelephone() {
 		return "";
 	}
 }
