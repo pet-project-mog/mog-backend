@@ -1,30 +1,26 @@
 package br.com.caelum.mog.domains.models;
 
+import br.com.caelum.mog.enums.CompanyUnit;
+
 public class CompanyInfo {
 
-	private String unitName;
-	private String unitEmail;
+	private CompanyUnit companyUnit;
 
-	public CompanyInfo(String unitName, String unitEmail) {
-		this.unitName = unitName;
-		this.unitEmail = unitEmail;
+	public CompanyInfo(CompanyUnit companyUnit){
+		this.companyUnit = companyUnit;
 	}
 
 	public String getUnitName() {
-		return unitName;
-	}
-
-	public void setUnitName(String unitName) {
-		this.unitName = unitName;
+		return companyUnit.getName();
 	}
 
 	public String getUnitEmail() {
-		return unitEmail;
+		return companyUnit.getEmail();
 	}
 
-	public void setUnitEmail(String unitEmail) {
-		this.unitEmail = unitEmail;
+	public String getUnitTelephone() {
+		return companyUnit.getTelephone();
 	}
-	
-	
+
+
 }
