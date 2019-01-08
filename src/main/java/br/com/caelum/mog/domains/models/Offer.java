@@ -14,7 +14,7 @@ import static org.springframework.util.Assert.notNull;
 public class Offer {
 
     private Customer customer;
-    private Owner owner;
+    private Responsible responsible;
     private List<Course> courses =  new ArrayList<>();
     private LocalDate date;
     private CompanyInfo companyInfo;
@@ -25,13 +25,13 @@ public class Offer {
     @Deprecated(since = "1.0.0")
     private Offer() { }
 
-    public Offer(Customer customer, List<Course> courses, LocalDate date, Owner owner, CompanyInfo companyInfo){
+    public Offer(Customer customer, List<Course> courses, LocalDate date, Responsible responsible, CompanyInfo companyInfo){
         notNull(customer, "Customer required");
         notEmpty(courses, "Courses required");
         notNull(date, "Date required");
 
         this.customer = customer;
-        this.owner = owner;
+        this.responsible = responsible;
         this.courses = courses;
         this.date = date;
         this.companyInfo = companyInfo;
@@ -59,8 +59,8 @@ public class Offer {
         return String.format(locale, "%s de %s de %s", day, month, year);
     }
 
-	public Owner getOwner() {
-		return owner;
+	public Responsible getResponsible() {
+		return responsible;
 	}
 
     public CompanyInfo getCompanyInfo() {

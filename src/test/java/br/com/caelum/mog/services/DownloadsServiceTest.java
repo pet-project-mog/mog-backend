@@ -1,12 +1,8 @@
 package br.com.caelum.mog.services;
 
 import br.com.caelum.mog.adapters.Downloadable;
-import br.com.caelum.mog.domains.models.CompanyInfo;
-import br.com.caelum.mog.domains.models.CourseSummaryItem;
-import br.com.caelum.mog.domains.models.Course;
-import br.com.caelum.mog.domains.models.Customer;
-import br.com.caelum.mog.domains.models.Offer;
-import br.com.caelum.mog.domains.models.Owner;
+import br.com.caelum.mog.domains.models.*;
+import br.com.caelum.mog.domains.models.Responsible;
 import br.com.caelum.mog.enums.CompanyUnit;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -43,12 +39,12 @@ class DownloadsServiceTest {
                 new Course("Course Two", "two", 20, defaultSummary)
         );
 
-        Owner owner = new Owner("Bianca Cavalcante");
+        Responsible responsible = new Responsible("Bianca Cavalcante");
 
         CompanyUnit companyUnit = CompanyUnit.SP;
         CompanyInfo companyInfo = new CompanyInfo(companyUnit);
 
-        Offer offer = new Offer(customer, courses, LocalDate.of(2018, Month.MARCH, 25), owner, companyInfo);
+        Offer offer = new Offer(customer, courses, LocalDate.of(2018, Month.MARCH, 25), responsible, companyInfo);
 
         Downloadable downloadable = service.getDowloadableOffer(offer);
 
