@@ -2,7 +2,11 @@ package br.com.caelum.mog.services;
 
 import br.com.caelum.mog.adapters.Downloadable;
 import br.com.caelum.mog.domains.models.CompanyInfo;
-import br.com.caelum.mog.domains.models.*;
+import br.com.caelum.mog.domains.models.CourseSummaryItem;
+import br.com.caelum.mog.domains.models.Course;
+import br.com.caelum.mog.domains.models.Customer;
+import br.com.caelum.mog.domains.models.Offer;
+import br.com.caelum.mog.domains.models.Owner;
 import br.com.caelum.mog.enums.CompanyUnit;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

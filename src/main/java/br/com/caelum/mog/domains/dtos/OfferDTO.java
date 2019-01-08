@@ -1,6 +1,10 @@
 package br.com.caelum.mog.domains.dtos;
 
-import br.com.caelum.mog.domains.models.*;
+import br.com.caelum.mog.domains.models.CompanyInfo;
+import br.com.caelum.mog.domains.models.Course;
+import br.com.caelum.mog.domains.models.Customer;
+import br.com.caelum.mog.domains.models.Offer;
+import br.com.caelum.mog.domains.models.Owner;
 import br.com.caelum.mog.enums.CompanyUnit;
 import br.com.caelum.mog.services.CoursesService;
 
@@ -60,7 +64,6 @@ public class OfferDTO {
         List<Course> mappedCourses = this.courses.stream().map(dto -> dto.toCourse(service)).collect(Collectors.toList());
 
         Customer customer = new Customer(commercialName);
-
         Owner owner = new Owner(ownerName);
 
         CompanyUnit unit = CompanyUnit.valueOf(companyUnit);
