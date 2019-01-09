@@ -17,7 +17,7 @@ public class Offer {
     private Responsible responsible;
     private List<Course> courses =  new ArrayList<>();
     private LocalDate date;
-    private CompanyInfo companyInfo;
+    private CaelumInfo caelumInfo;
 
     /**
      * @deprecated frameworks only
@@ -25,7 +25,7 @@ public class Offer {
     @Deprecated(since = "1.0.0")
     private Offer() { }
 
-    public Offer(Customer customer, List<Course> courses, LocalDate date, Responsible responsible, CompanyInfo companyInfo){
+    public Offer(Customer customer, List<Course> courses, LocalDate date, Responsible responsible, CaelumInfo caelumInfo){
         notNull(customer, "Customer required");
         notEmpty(courses, "Courses required");
         notNull(date, "Date required");
@@ -34,7 +34,7 @@ public class Offer {
         this.responsible = responsible;
         this.courses = courses;
         this.date = date;
-        this.companyInfo = companyInfo;
+        this.caelumInfo = caelumInfo;
     }
 
     public Customer getCustomer() {
@@ -63,7 +63,7 @@ public class Offer {
 		return responsible;
 	}
 
-    public CompanyInfo getCompanyInfo() {
-        return companyInfo;
+    public CaelumInfo getCaelumInfo() {
+        return caelumInfo;
     }
 }

@@ -2,7 +2,7 @@ package br.com.caelum.mog.domains.dtos;
 
 import br.com.caelum.mog.domains.models.*;
 import br.com.caelum.mog.domains.models.Responsible;
-import br.com.caelum.mog.enums.CompanyUnit;
+import br.com.caelum.mog.enums.CaelumDistrict;
 import br.com.caelum.mog.services.CoursesService;
 
 import java.time.LocalDate;
@@ -17,7 +17,7 @@ public class OfferDTO {
 
     private String commercialName;
     private String responsibleName;
-    private String companyUnit;
+    private String caelumDistrict;
     private List<CourseDTO> courses = new ArrayList<>();
 
 	/**
@@ -26,17 +26,17 @@ public class OfferDTO {
     @Deprecated(since = "1.0.0")
     private OfferDTO() { }
 
-    public OfferDTO(String commercialName, String responsibleName, String companyUnit, CourseDTO... courses) {
+    public OfferDTO(String commercialName, String responsibleName, String caelumDistrict, CourseDTO... courses) {
         hasText(commercialName, "Commercial name required");
         notEmpty(courses, "At least one course must be informed");
         hasText(responsibleName, "Responsible name required");
-        hasText(companyUnit, "ComapanyUnit required");
+        hasText(caelumDistrict, "Caelum District required");
 
 
         this.commercialName = commercialName;
         this.courses = List.of(courses);
         this.responsibleName = responsibleName;
-        this.companyUnit = companyUnit;
+        this.caelumDistrict = caelumDistrict;
     }
 
     public String getCommercialName() {
@@ -47,8 +47,8 @@ public class OfferDTO {
         return courses;
     }
 
-    public String getCompanyUnit() {
-        return companyUnit;
+    public String getCaelumDistrict() {
+        return caelumDistrict;
     }
 
     public String getResponsibleName() {
@@ -62,9 +62,9 @@ public class OfferDTO {
         Customer customer = new Customer(commercialName);
         Responsible responsible = new Responsible(responsibleName);
 
-        CompanyUnit unit = CompanyUnit.valueOf(companyUnit);
-        CompanyInfo companyInfo = new CompanyInfo(unit);
+        CaelumDistrict district = CaelumDistrict.valueOf(caelumDistrict);
+        CaelumInfo caelumInfo = new CaelumInfo(district);
 
-		return new Offer(customer, mappedCourses, LocalDate.now(), responsible, companyInfo);
+		return new Offer(customer, mappedCourses, LocalDate.now(), responsible, caelumInfo);
     }
 }

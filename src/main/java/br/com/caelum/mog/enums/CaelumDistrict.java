@@ -1,6 +1,6 @@
 package br.com.caelum.mog.enums;
 
-public enum CompanyUnit {
+public enum CaelumDistrict {
 
 	SP {
 		@Override
